@@ -12,13 +12,18 @@ class Application {
             this.loader = new Loader(this.config, PIXI.Assets);
             this.loader.preload().then(() => this.start());
             this.scenes = new ScenesManager();
-            this.app.stage.addChild(this.scenes.container);
         }) 
     }
-    start() {
+    async start() {
         this.scene = new this.config["startScene"]();
         this.scenes.start("Game");
-        this.app.stage.addChild(this.scene.backgroundSprite);
+        const bg = this.scene.backgroundSprite
+        // Center the sprite's anchor point
+        bg.anchor.set(0.5);
+        // Move the sprite to the center of the screen
+        bg.x = this.app.screen.width / 2;
+        bg.y = this.app.screen.height / 2;
+        this.app.stage.addChild(bg);
     }
     res(key) {
         return this.loader.resources[key];
