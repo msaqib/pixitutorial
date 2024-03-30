@@ -10,7 +10,8 @@ export class Scene {
     }
 
     create() {}
-    update() {}
+    update(dt) {
+    }
     destroy() {}
 
     remove() {

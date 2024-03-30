@@ -10,4 +10,7 @@ export class Tools {
 
         return files;
     }
+    static importAll(r) {
+        return r.keys().map(key => r(key))
+    }
 }

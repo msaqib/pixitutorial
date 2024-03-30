@@ -12,6 +12,7 @@ export class GameScene extends Scene {
     }
 
     update(dt) {
-        this.bg.update(dt);
+        super.update(dt)
+        this.bg.update(dt.deltaTime);
     }
 }

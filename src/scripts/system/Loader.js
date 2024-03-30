@@ -1,8 +1,6 @@
-function importAll(r) {
-    return r.keys().map(key => r(key));
-}
 
-const sprites = importAll(require.context('./../../sprites', true, /\.(png|mp3)$/));
+import { Tools } from "./Tools";
+const sprites = Tools.importAll(require.context('./../../sprites', true, /\.(png|mp3)$/));
 
 export class Loader {
     constructor(config, Assets) {
