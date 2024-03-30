@@ -1,10 +1,8 @@
 
-import { Tools } from "./Tools";
-const sprites = Tools.importAll(require.context('./../../sprites', true, /\.(png|mp3)$/));
-
 export class Loader {
     constructor(config, Assets) {
         this.config = config;
+        this.sprites = config.loader
         this.resources = {};
         this.Assets = Assets;
         this.loadedAssets = {}
@@ -13,7 +11,7 @@ export class Loader {
     async preload() {
         try {
                 await Promise.all(
-                    sprites.map(async (imageModule) => {
+                    this.sprites.map(async (imageModule) => {
                     let imagePath = imageModule.default;
                     const texture = await this.Assets.load(imagePath);
                     const indexOfSlash = imagePath.lastIndexOf('/')
